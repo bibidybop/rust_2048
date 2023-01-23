@@ -24,7 +24,7 @@ fn main() -> Result<(), Box<dyn Error>> {
 
     //game
     'gameloop: loop {
-        thread::sleep(Duration::from_millis(100)); // max of 100 frames per second
+        thread::sleep(Duration::from_millis(10));
 
         // input from user
         while event::poll(Duration::default())? {
@@ -33,12 +33,12 @@ fn main() -> Result<(), Box<dyn Error>> {
                     KeyCode::Esc | KeyCode::Char('q') => {
                         break 'gameloop;
                     }
-                    KeyCode::Left => field.take_action(Action::Left),
-                    KeyCode::Right => field.take_action(Action::Right),
-                    KeyCode::Up => field.take_action(Action::Up),
-                    KeyCode::Down => field.take_action(Action::Down),
+                    KeyCode::Left => field.take_action(&Action::Left),
+                    KeyCode::Right => field.take_action(&Action::Right),
+                    KeyCode::Up => field.take_action(&Action::Up),
+                    KeyCode::Down => field.take_action(&Action::Down),
                     _ => {
-                        continue 'gameloop;
+                        continue 'gameloop; // skip the render step
                     }
                 }
             }

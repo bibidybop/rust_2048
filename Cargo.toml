@@ -8,3 +8,18 @@ edition = "2021"
 [dependencies]
 crossterm = "0.25.0"
 rand = "0.8.5"
+
+[dev-dependencies]
+criterion = "0.4"
+
+# [profile.dev]
+# opt-level=3
+# debug=false
+# debug-assersions=false
+# overflow-checks=false
+# incremental=false
+# codegen-units=16
+
+[[bench]]
+name = "bench_board_manipulations"
+harness = false

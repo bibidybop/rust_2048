@@ -1,6 +1,5 @@
 use crate::board_manipulations;
 use rand::Rng;
-use std::fmt::{Display, Formatter};
 
 pub enum Action {
     Left,
@@ -15,7 +14,7 @@ pub struct Field {
 }
 
 impl Field {
-    pub fn take_action(&mut self, action: Action) {
+    pub fn take_action(&mut self, action: &Action) {
         let tiles = match action {
             Action::Left => board_manipulations::left(&self.tiles),
             Action::Right => board_manipulations::right(&self.tiles),
@@ -26,6 +25,11 @@ impl Field {
             self.tiles = tiles;
             self.add_random_tile();
         }
+    }
+    pub fn take_random_action(&mut self) {
+        let moves = self.available_moves();
+        let i = rand::thread_rng().gen_range(0..moves.len());
+        self.take_action(&moves[i]);
     }
 
     pub fn available_moves(&self) -> Vec<Action> {

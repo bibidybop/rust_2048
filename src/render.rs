@@ -1,6 +1,4 @@
-// use crate::field::Field;
 use crossterm::cursor::MoveTo;
-use crossterm::terminal::{Clear, ClearType};
 use crossterm::QueueableCommand;
 use std::io::{Stdout, Write};
 
