@@ -79,15 +79,3 @@ impl Field {
     }
 }
 
-// impl Display for Field {
-//     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
-//         for (i, s) in self.tiles.iter().enumerate() {
-//             write!(f, "{}", s)?;
-//             if i % 4 == 3 {
-//                 writeln!(f)?;
-//             }
-//         }
-//         writeln!(f)?;
-//         Ok(())
-//     }
-// }
